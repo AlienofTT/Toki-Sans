@@ -1,0 +1,3 @@
+makeotf -f cidfont.ps -omitMacNames -ff features -fi cidfontinfo -mf FontMenuNameDB -r -nS -cs 25 -ch UniSourceHanSansCN-UTF32-H -ci SourceHanSans_CN_sequences.txt
+tx -cff +S -no_futile cidfont.ps CFF
+sfntedit -a CFF=CFF TokiSans.otf
