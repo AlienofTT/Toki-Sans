@@ -11,7 +11,7 @@ languagesystem hani dflt;
 languagesystem hani ZHS;
 
 table head {
-  FontRevision 0.1;
+  FontRevision 0.111;
 } head;
 
 table hhea {
