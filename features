@@ -11,7 +11,7 @@ languagesystem hani dflt;
 languagesystem hani ZHS;
 
 table head {
-  FontRevision 0.111;
+  FontRevision 0.112;
 } head;
 
 table hhea {
@@ -415,6 +415,12 @@ feature liga {
 
 feature dlig {
   # 自由连字
+  # 半角波浪
+  @Nonwavy = [\0-\94 \96-\65513];
+  @Wavy = [\95 \65514 \65515 \65516];
+  substitute @Wavy @Wavy' @Wavy by \65515;
+  substitute @Wavy @Wavy' @Nonwavy by \65516;
+  substitute @Wavy' by \65514;
 
   # 双感叹号
   substitute \2 \2 by \742;
@@ -430,10 +436,14 @@ feature dlig {
   substitute \65510 \65510 \65510 by \65513;
   # 感叹号问号
   substitute \2 \32 by \746;
+  substitute \65510 \32 by \746;
   substitute \63147 \63152 by \746;
+  substitute \65510 \63152 by \746;
   # 问号感叹号
   substitute \32 \2 by \745;
+  substitute \32 \65510 by \745;
   substitute \63152 \63147 by \745;
+  substitute \63152 \65510 by \745;
   # 双问号
   substitute \32 \32 by \744;
   substitute \63152 \63152 by \744;
@@ -1521,8 +1531,12 @@ feature locl {
 } locl;
 
 lookup vert_all {
-  # 波浪
-  substitute \95 by \65518;
+  # 竖排替换
+  # 半角波浪
+  substitute \95 by \65517;
+  substitute \65514 by \65517;
+  substitute \65515 by \65518;
+  substitute \65516 by \65519;
 
   # 破折号
   substitute \722 by \58990;
@@ -2025,7 +2039,7 @@ feature halt {
 
 feature kern {
 
-  # 横波浪挤压连接
+  # 横全角波浪挤压连接
   position \1424 \1424 -220;
 
   # Japanese
@@ -5610,7 +5624,7 @@ feature vhal {
 
 feature vkrn {
 
-  # 竖波浪挤压连接
+  # 竖全角波浪挤压连接
   position \65154 \65154 -220;
   position \1424 \1424 -220;
 
