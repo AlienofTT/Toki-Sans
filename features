@@ -325,12 +325,16 @@ feature aalt {
   feature salt;
 } aalt;
 
-# 斜感叹号
 feature salt{
+  # 斜感叹号
   substitute \2 by \65510;
   substitute \63147 by \65510;
   substitute \742 by \65511;
   substitute \65512 by \65513;
+
+  # 斜双引号
+  substitute \63281 by \1425;
+  substitute \63282 by \1426;
 } salt;
 
 lookup std_ccmp {
@@ -1533,7 +1537,7 @@ feature locl {
 lookup vert_all {
   # 竖排替换
   # 半角波浪
-  substitute \95 by \65517;
+  substitute \95 by \65518;
   substitute \65514 by \65517;
   substitute \65515 by \65518;
   substitute \65516 by \65519;
