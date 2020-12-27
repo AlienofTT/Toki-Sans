@@ -325,9 +325,12 @@ feature aalt {
   feature salt;
 } aalt;
 
+# 斜感叹号
 feature salt{
   substitute \2 by \65510;
+  substitute \63147 by \65510;
   substitute \742 by \65511;
+  substitute \65512 by \65513;
 } salt;
 
 lookup std_ccmp {
@@ -411,6 +414,30 @@ feature liga {
 } liga;
 
 feature dlig {
+  # 自由连字
+
+  # 双感叹号
+  substitute \2 \2 by \742;
+  substitute \63147 \63147 by \742;
+  # 三感叹号
+  substitute \742 \2 by \65512;
+  substitute \742 \63147 by \65512;
+  substitute \2 \2 \2 by \65512;
+  substitute \63147 \63147 \63147 by \65512;
+  # 双斜感叹号
+  substitute \65510 \65510 by \65511;
+  # 三斜感叹号
+  substitute \65510 \65510 \65510 by \65513;
+  # 感叹号问号
+  substitute \2 \32 by \746;
+  substitute \63147 \63152 by \746;
+  # 问号感叹号
+  substitute \32 \2 by \745;
+  substitute \63152 \63147 by \745;
+  # 双问号
+  substitute \32 \32 by \744;
+  substitute \63152 \63152 by \744;
+
   # Katakana Ligatures
   substitute \1555 \1602 \1645 \1593 by \2185;
   substitute \1555 \1628 \1606 \1554 by \2186;
@@ -580,11 +607,7 @@ feature dlig {
   substitute \25 \20220 by \2416;
   substitute \26 \20220 by \2417;
   # Square Latin Ligatures
-  substitute \2 \2 by \742;
-  substitute \65510 \65510 by \65511;
-  substitute \2 \32 by \746;
-  substitute \32 \2 by \745;
-  substitute \32 \32 by \744;
+
   substitute \34 \16 \78 by \2408;
   substitute \34 \54 by \2299;
   substitute \35 \82 by \2380;
@@ -1498,10 +1521,17 @@ feature locl {
 } locl;
 
 lookup vert_all {
-  # Experimental vert Em Dash
+  # 波浪
+  substitute \95 by \65518;
+
+  # 破折号
   substitute \722 by \58990;
   substitute \1355 by \65147;
   substitute \1356 by \65148;
+
+  # 全角感叹号问号
+  substitute \63147 by \2;
+  substitute \63152 by \32;
 
   # Bopomofo
   substitute \249 by \65140;
@@ -1865,10 +1895,17 @@ lookup vert_all {
   substitute \61895 by \65484;
   substitute \63143 by \65147;
   substitute \63144 by \65148;
-  substitute \63147 by \58984;
+
+  # 竖排标点 靠左->靠右
+  # 感叹号
+  # substitute \63147 by \58984;
+  # 冒号
   substitute \63150 by \58982;
+  # 分号
   substitute \63151 by \58983;
-  substitute \63152 by \58985;
+  # 问号
+  # substitute \63152 by \58985;
+
   substitute \61872 by \65461;
   substitute \61873 by \65462;
   substitute \61874 by \65463;
@@ -1881,6 +1918,7 @@ lookup vert_all {
   substitute \61894 by \65483;
 } vert_all;
 
+# 引号->方引号
 lookup vert_cn {
   substitute \63279 by \59006;
   substitute \63280 by \59007;
@@ -1888,10 +1926,15 @@ lookup vert_cn {
   substitute \63282 by \59009;
 } vert_cn;
 
+# 竖排标点 居中->靠右
 lookup vert_krcn {
+  # 感叹号
   substitute \59047 by \58984;
+  # 冒号
   substitute \59072 by \58982;
+  # 分号
   substitute \59073 by \58983;
+  # 问号
   substitute \59077 by \58985;
 } vert_krcn;
 
@@ -1981,6 +2024,10 @@ feature halt {
 } halt;
 
 feature kern {
+
+  # 横波浪挤压连接
+  position \1424 \1424 -220;
+
   # Japanese
   position \1645 \1397 -10;
   position \1645 \1398 -10;
@@ -5562,6 +5609,11 @@ feature vhal {
 } vhal;
 
 feature vkrn {
+
+  # 竖波浪挤压连接
+  position \65154 \65154 -220;
+  position \1424 \1424 -220;
+
   position \65339 \58980 -30;
   position \65339 \58981 -30;
   position \65339 \65251 -30;
